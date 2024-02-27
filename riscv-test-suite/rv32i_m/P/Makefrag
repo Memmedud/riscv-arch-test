@@ -1,0 +1,268 @@
+# RISC-V Architecture Test RV32IM Makefrag
+#
+# Copyright (c) 2018, Imperas Software Ltd.
+# Copyright (c) 2020, InCore Semiconductors. Pvt. Ltd.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#      * Redistributions of source code must retain the above copyright
+#        notice, this list of conditions and the following disclaimer.
+#      * Redistributions in binary form must reproduce the above copyright
+#        notice, this list of conditions and the following disclaimer in the
+#        documentation and/or other materials provided with the distribution.
+#      * Neither the name of the Imperas Software Ltd. nor the
+#        names of its contributors may be used to endorse or promote products
+#        derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+# IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+# THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+# PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL Imperas Software Ltd. BE LIABLE FOR ANY
+# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+# THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Description: Makefrag for RV32IM architectural tests
+
+rv32im_sc_tests = \
+  add16-01 \
+  insb-01 \
+  kdmatt-01 \
+  kmada-01 \
+  kmmawb2.u-01 \
+  kmsxda-01 \
+  kslraw.u-01 \
+  mulsr64-01 \
+  rsub16-01 \
+  slli16-01 \
+  smar64-01 \
+  smmwt-01 \
+  sra16.u-01 \
+  srli16.u-01 \
+  uclip16-01 \
+  ukcrsa16-01 \
+  umax8-01 \
+  urcrsa16-01 \
+  add64-01 \
+  kabs16-01 \
+  kdmbb-01 \
+  kmadrs-01 \
+  kmmawt-01 \
+  kmxda-01 \
+  kstas16-01 \
+  pbsad-01 \
+  rsub64-01 \
+  slli8-01 \
+  smax16-01 \
+  smmwt.u-01 \
+  sra8-01 \
+  srli8-01 \
+  uclip32-01 \
+  ukmar64-01 \
+  umin16-01 \
+  urstas16-01 \
+  add8-01 \
+  kabs8-01 \
+  kdmbt-01 \
+  kmads-01 \
+  kmmawt.u-01 \
+  ksll16-01 \
+  kstsa16-01 \
+  pbsada-01 \
+  rsub8-01 \
+  smal-01 \
+  smax8-01 \
+  smslda-01 \
+  sra8.u-01 \
+  srli8.u-01 \
+  uclip8-01 \
+  ukmsr64-01 \
+  umin8-01 \
+  urstsa16-01 \
+  ave-01 \
+  kabsw-01 \
+  kdmtt-01 \
+  kmar64-01 \
+  kmmawt2-01 \
+  ksll8-01 \
+  ksub16-01 \
+  pkbt16-01 \
+  rsubw-01 \
+  smalbb-01 \
+  smbb16-01 \
+  smslxda-01 \
+  srai.u-01 \
+  stas16-01 \
+  ucmple16-01 \
+  ukstas16-01 \
+  umsr64-01 \
+  ursub16-01 \
+  clrs16-01 \
+  kadd16-01 \
+  khm16-01 \
+  kmatt-01 \
+  kmmawt2.u-01 \
+  kslli16-01 \
+  ksub64-01 \
+  pktb16-01 \
+  sclip16-01 \
+  smalbt-01 \
+  smbt16-01 \
+  smsr64-01 \
+  srai16-01 \
+  stsa16-01 \
+  ucmple8-01 \
+  ukstsa16-01 \
+  umul16-01 \
+  ursub64-01 \
+  clrs32-01 \
+  kadd64-01 \
+  khm8-01 \
+  kmaxda-01 \
+  kmmsb-01 \
+  kslli8-01 \
+  ksub8-01 \
+  radd16-01 \
+  sclip32-01 \
+  smalda-01 \
+  smdrs-01 \
+  smtt16-01 \
+  srai16.u-01 \
+  sub16-01 \
+  ucmplt16-01 \
+  uksub16-01 \
+  umul8-01 \
+  ursub8-01 \
+  clrs8-01 \
+  kadd8-01 \
+  khmbb-01 \
+  kmaxds-01 \
+  kmmsb.u-01 \
+  kslliw-01 \
+  ksubh-01 \
+  radd64-01 \
+  sclip8-01 \
+  smaldrs-01 \
+  smds-01 \
+  smul16-01 \
+  srai8-01 \
+  sub64-01 \
+  ucmplt8-01 \
+  uksub64-01 \
+  umulx16-01 \
+  ursubw-01 \
+  clz16-01 \
+  kaddh-01 \
+  khmbt-01 \
+  kmda-01 \
+  kmmwb2-01 \
+  ksllw-01 \
+  ksubw-01 \
+  radd8-01 \
+  scmple16-01 \
+  smalds-01 \
+  smin16-01 \
+  smul8-01 \
+  srai8.u-01 \
+  sub8-01 \
+  ukadd16-01 \
+  uksub8-01 \
+  umulx8-01 \
+  zunpkd810-01 \
+  clz8-01 \
+  kaddw-01 \
+  khmtt-01 \
+  kmmac-01 \
+  kmmwb2.u-01 \
+  kslra16-01 \
+  kwmmul-01 \
+  raddw-01 \
+  scmple8-01 \
+  smaltt-01 \
+  smin8-01 \
+  smulx16-01 \
+  srl16-01 \
+  sunpkd810-01 \
+  ukadd64-01 \
+  uksubh-01 \
+  uradd16-01 \
+  zunpkd820-01 \
+  cmpeq16-01 \
+  kcras16-01 \
+  khmx16-01 \
+  kmmac.u-01 \
+  kmmwt2-01 \
+  kslra16.u-01 \
+  kwmmul.u-01 \
+  rcras16-01 \
+  scmplt16-01 \
+  smalxda-01 \
+  smmul-01 \
+  smulx8-01 \
+  srl16.u-01 \
+  sunpkd820-01 \
+  ukadd8-01 \
+  uksubw-01 \
+  uradd64-01 \
+  zunpkd830-01 \
+  cmpeq8-01 \
+  kcrsa16-01 \
+  khmx8-01 \
+  kmmawb-01 \
+  kmmwt2.u-01 \
+  kslra8-01 \
+  maddr32-01 \
+  rcrsa16-01 \
+  scmplt8-01 \
+  smalxds-01 \
+  smmul.u-01 \
+  smxds-01 \
+  srl8-01 \
+  sunpkd830-01 \
+  ukaddh-01 \
+  umaqa-01 \
+  uradd8-01 \
+  zunpkd831-01 \
+  cras16-01 \
+  kdmabb-01 \
+  kmabb-01 \
+  kmmawb.u-01 \
+  kmsda-01 \
+  kslra8.u-01 \
+  msubr32-01 \
+  rstas16-01 \
+  sll16-01 \
+  smaqa-01 \
+  smmwb-01 \
+  sra.u-01 \
+  srl8.u-01 \
+  sunpkd831-01 \
+  ukaddw-01 \
+  umar64-01 \
+  uraddw-01 \
+  zunpkd832-01 \
+  crsa16-01 \
+  kdmabt-01 \
+  kmabt-01 \
+  kmmawb2-01 \
+  kmsr64-01 \
+  kslraw-01 \
+  mulr64-01 \
+  rstsa16-01 \
+  sll8-01 \
+  smaqa.su-01 \
+  smmwb.u-01 \
+  sra16-01 \
+  srli16-01 \
+  sunpkd832-01 \
+  ukcras16-01 \
+  umax16-01 \
+  urcras16-01 \
+
+rv32im_tests = $(addsuffix .elf, $(rv32im_sc_tests))
+
+target_tests += $(rv32im_tests)

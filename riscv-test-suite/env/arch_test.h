@@ -17,22 +17,22 @@
 // RV Arch Test Macros
 //-----------------------------------------------------------------------
 #ifndef RVMODEL_SET_MSW_INT
-  #warning "RVMODEL_SET_MSW_INT is not defined by target. Declaring as empty macro"
+  //#warning "RVMODEL_SET_MSW_INT is not defined by target. Declaring as empty macro"
   #define RVMODEL_SET_MSW_INT       
 #endif
 
 #ifndef RVMODEL_CLEAR_MSW_INT     
-  #warning "RVMODEL_CLEAR_MSW_INT is not defined by target. Declaring as empty macro"
+  //#warning "RVMODEL_CLEAR_MSW_INT is not defined by target. Declaring as empty macro"
   #define RVMODEL_CLEAR_MSW_INT     
 #endif
 
 #ifndef RVMODEL_CLEAR_MTIMER_INT
-  #warning "RVMODEL_CLEAR_MTIMER_INT is not defined by target. Declaring as empty macro"
+  //#warning "RVMODEL_CLEAR_MTIMER_INT is not defined by target. Declaring as empty macro"
   #define RVMODEL_CLEAR_MTIMER_INT
 #endif
 
 #ifndef RVMODEL_CLEAR_MEXT_INT
-  #warning "RVMODEL_CLEAR_MEXT_INT is not defined by target. Declaring as empty macro"
+  //#warning "RVMODEL_CLEAR_MEXT_INT is not defined by target. Declaring as empty macro"
   #define RVMODEL_CLEAR_MEXT_INT
 #endif
 
@@ -555,11 +555,11 @@ rvtest_data_end:
 
 #define RVTEST_CASE(_PNAME,_DSTR,...)
 
-#define RVTEST_FP_ENABLE()              \
+/*#define RVTEST_FP_ENABLE()              \
  li a0, MSTATUS_FS & (MSTATUS_FS >> 1); \
  csrs mstatus, a0;                      \
  csrwi fcsr, 0
-
+*/
 #ifdef pext_check_vxsat_ov
 #define RVTEST_VXSAT_ENABLE()\
  li a0, MSTATUS_VS & (MSTATUS_VS >> 1); \
@@ -1333,7 +1333,7 @@ RVTEST_SIGUPD_F(swreg,destreg,flagreg,offset)
 
 //--------------------------------- Migration aliases ------------------------------------------
 #ifdef RV_COMPLIANCE_RV32M
-  #warning "RV_COMPLIANCE_RV32M macro will be deprecated."
+  //#warning "RV_COMPLIANCE_RV32M macro will be deprecated."
   #define RVMODEL_BOOT \
     RVTEST_IO_INIT; \
     RV_COMPLIANCE_RV32M ; \
@@ -1343,39 +1343,39 @@ RVTEST_SIGUPD_F(swreg,destreg,flagreg,offset)
 #define SWSIG(a, b)
   
 #ifdef RV_COMPLIANCE_DATA_BEGIN
-  #warning "RV_COMPLIANCE_DATA_BEGIN macro deprecated in v0.2. Please use RVMODEL_DATA_BEGIN instead"
+  //#warning "RV_COMPLIANCE_DATA_BEGIN macro deprecated in v0.2. Please use RVMODEL_DATA_BEGIN instead"
   #define RVMODEL_DATA_BEGIN \
     RV_COMPLIANCE_DATA_BEGIN
 #endif
 
 #ifdef RV_COMPLIANCE_DATA_END
-  #warning "RV_COMPLIANCE_DATA_END macro deprecated in v0.2. Please use RVMODEL_DATA_END instead"
+  //#warning "RV_COMPLIANCE_DATA_END macro deprecated in v0.2. Please use RVMODEL_DATA_END instead"
   #define RVMODEL_DATA_END \
     RV_COMPLIANCE_DATA_END
 #endif
 
 #ifdef RV_COMPLIANCE_HALT
-  #warning "RV_COMPLIANCE_HALT macro deprecated in v0.2. Please use RVMODEL_HALT instead"
+  //#warning "RV_COMPLIANCE_HALT macro deprecated in v0.2. Please use RVMODEL_HALT instead"
   #define RVMODEL_HALT \
     RV_COMPLIANCE_HALT
 #endif
 
 #ifdef RVTEST_IO_ASSERT_GPR_EQ
-  #warning "RVTEST_IO_ASSERT_GPR_EQ macro deprecated in v0.2. Please use RVMODEL_IO_ASSERT_GPR_EQ instead"
+  //#warning "RVTEST_IO_ASSERT_GPR_EQ macro deprecated in v0.2. Please use RVMODEL_IO_ASSERT_GPR_EQ instead"
   #define RVMODEL_IO_ASSERT_GPR_EQ(_SP, _R, _I) \
     RVTEST_IO_ASSERT_GPR_EQ(_SP,_R, _I)
 #endif
 
 #ifdef RVTEST_IO_WRITE_STR 
-  #warning "RVTEST_IO_WRITE_STR macro deprecated in v0.2. Please use RVMODEL_IO_WRITE_STR instead"
+  //#warning "RVTEST_IO_WRITE_STR macro deprecated in v0.2. Please use RVMODEL_IO_WRITE_STR instead"
   #define RVMODEL_IO_WRITE_STR(_SP, _STR) \
     RVTEST_IO_WRITE_STR(_SP, _STR)
 #endif
 
 #ifdef RVTEST_IO_INIT
-  #warning "RVTEST_IO_INIT is deprecated in v0.2. Please use RVMODEL_BOOT for initialization"
+  //#warning "RVTEST_IO_INIT is deprecated in v0.2. Please use RVMODEL_BOOT for initialization"
 #endif
   
 #ifdef RVTEST_IO_CHECK
-  #warning "RVTEST_IO_CHECK is deprecated in v0.2.
+  //#warning "RVTEST_IO_CHECK is deprecated in v0.2.
 #endif
