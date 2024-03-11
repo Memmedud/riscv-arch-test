@@ -1,5 +1,7 @@
-# Using Spike as an Architectural Test Target
+### Spike-v0.1
 
-To add spike (riscv-isa-sim) as a test-target for the architectural test suite, please refer to the
-readme available
-[here](https://github.com/riscv/riscv-isa-sim/blob/master/arch_test_target/spike/README.md)
+This target demonstrates how a target ported to the old v0.1 framework can be ported to the new
+v0.2 framework with minimal changes.
+
+Please read the [migration](../../doc/MIGRATION.adoc) file for more information on migration across
+versions of the framework.

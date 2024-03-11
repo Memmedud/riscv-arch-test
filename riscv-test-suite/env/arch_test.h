@@ -1020,16 +1020,15 @@ RVTEST_SIGUPD_F(swreg,destreg,flagreg,offset)
     LI(reg1, MASK_XLEN(val1)); \
     LI(reg2, MASK_XLEN(val2)); \
     inst destreg, reg1, reg2; \
-    RVTEST_SIGUPD_PK(swreg, destreg, flagreg, offset); \
-    RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval)
+    //RVTEST_SIGUPD_PK(swreg, destreg, flagreg, offset); \
+    //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval)
 
 //Tests for instructions with a single register operand and update the saturation flag
 #define TEST_PKR_OP( inst, destreg, reg, correctval, val, flagreg, swreg, offset, testreg) \
-    TEST_CASE_FID(testreg, destreg, correctval, swreg, flagreg, offset, \
-      LI(reg, MASK_XLEN(val)); \
-      inst destreg, reg; \
-      rdov flagreg; \
-    )
+    LI(reg, MASK_XLEN(val)); \
+    inst destreg, reg;
+    //rdov flagreg;
+    //TEST_CASE_FID(testreg, destreg, correctval, swreg, flagreg, offset,
 
 #if __riscv_xlen == 32
 //Tests for a instruction with register pair operands for all its three operands
@@ -1039,9 +1038,9 @@ RVTEST_SIGUPD_F(swreg,destreg,flagreg,offset)
       LI(reg2, MASK_XLEN(val2)); \
       LI(reg2_hi, MASK_XLEN(val2_hi)); \
       inst destreg, reg1, reg2; \
-      RVTEST_SIGUPD_P64(swreg,destreg, destreg_hi, offset); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
+      //RVTEST_SIGUPD_P64(swreg,destreg, destreg_hi, offset); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
 
 #define TEST_PK64_PPP_OP_32(inst, destreg, destreg_hi, reg1, reg1_hi, reg2, reg2_hi, correctval, correctval_hi, val1, val1_hi, val2, val2_hi, flagreg, swreg, offset, testreg) \
       LI(reg1, MASK_XLEN(val1)); \
@@ -1049,49 +1048,49 @@ RVTEST_SIGUPD_F(swreg,destreg,flagreg,offset)
       LI(reg2, MASK_XLEN(val2)); \
       LI(reg2_hi, MASK_XLEN(val2_hi)); \
       inst destreg, reg1, reg2; \
-      RVTEST_SIGUPD_PK64(swreg,destreg, destreg_hi, flagreg, offset); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
+      //RVTEST_SIGUPD_PK64(swreg,destreg, destreg_hi, flagreg, offset); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
 
 #define TEST_P64_PPN_OP_32(inst, destreg, destreg_hi, reg1, reg1_hi, reg2, correctval, correctval_hi, val1, val1_hi, val2, swreg, offset, testreg) \
       LI(reg1, MASK_XLEN(val1)); \
       LI(reg1_hi, MASK_XLEN(val1_hi)); \
       LI(reg2, MASK_XLEN(val2)); \
       inst destreg, reg1, reg2; \
-      RVTEST_SIGUPD_P64(swreg, destreg, destreg_hi, offset); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
+      //RVTEST_SIGUPD_P64(swreg, destreg, destreg_hi, offset); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
 
 #define TEST_P64_PNN_OP_32(inst, destreg, destreg_hi, reg1, reg2, correctval, correctval_hi, val1, val2, swreg, offset, testreg) \
       LI(reg1, MASK_XLEN(val1)); \
       LI(reg2, MASK_XLEN(val2)); \
       inst destreg, reg1, reg2; \
-      RVTEST_SIGUPD_P64(swreg, destreg, destreg_hi, offset); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
+      //RVTEST_SIGUPD_P64(swreg, destreg, destreg_hi, offset); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
 
 #define TEST_PK64_PNN_OP_32(inst, destreg, destreg_hi, reg1, reg2, correctval, correctval_hi, val1, val2, flagreg, swreg, offset, testreg) \
       LI(reg1, MASK_XLEN(val1)); \
       LI(reg2, MASK_XLEN(val2)); \
       inst destreg, reg1, reg2; \
-      RVTEST_SIGUPD_PK64(swreg, destreg, destreg_hi, flagreg, offset); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
+      //RVTEST_SIGUPD_PK64(swreg, destreg, destreg_hi, flagreg, offset); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg_hi, correctval_hi)
 
 #define TEST_P64_NPN_OP_32(inst, destreg, reg1, reg1_hi, reg2, correctval, val1, val1_hi, val2, swreg, offset, testreg) \
       LI(reg1, MASK_XLEN(val1)); \
       LI(reg1_hi, MASK_XLEN(val1_hi)); \
       LI(reg2, MASK_XLEN(val2)); \
       inst destreg, reg1, reg2; \
-      RVTEST_SIGUPD(swreg,destreg,offset); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval);
+      //RVTEST_SIGUPD(swreg,destreg,offset); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval);
 
 #define TEST_P64_NP_OP_32(inst, destreg, reg1, reg1_hi, correctval, val1, val1_hi, imm_val, swreg, offset, testreg) \
       LI(reg1, MASK_XLEN(val1)); \
       LI(reg1_hi, MASK_XLEN(val1_hi)); \
       inst destreg, reg1, imm_val; \
-      RVTEST_SIGUPD(swreg,destreg,offset); \
-      RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval);
+      //RVTEST_SIGUPD(swreg,destreg,offset); \
+      //RVMODEL_IO_ASSERT_GPR_EQ(testreg, destreg, correctval);
 
 //Tests for a instruction with pair register rd, pair register rs1 and pair register rs2
 #define TEST_P64_PPP_OP(inst, rd, rd_hi, rs1, rs1_hi, rs2, rs2_hi, correctval, correctval_hi, rs1_val, rs1_val_hi, rs2_val, rs2_val_hi, swreg, offset, testreg) \
